@@ -7,7 +7,7 @@
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
             <a-assets>
-                <audio id="ducksound" src="https://mattyer282.github.io/SmartCity-AR/assets/Duckquack.mp3" preload="auto" autoplay="true"></audio>
+                <audio id="ducksound" src="https://raw.githack.com/mattyer282/mattyer282.github.io/master/SmartCity-AR/assets/Duckquack.mp3" preload="auto" autoplay="true"></audio>
                 <a-asset-item id="duck" src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"></a-asset-item>
             </a-assets>
 
@@ -25,7 +25,7 @@
                 </a-entity>
 
                 <!-- second entity: reference to the above audio -->
-                <a-entity sound="src: #ducksound; volume: 1; loop: false">
+                <a-entity sound="src: #ducksound; volume: 1; loop: true">
                 </a-entity>
             </a-marker>
 
