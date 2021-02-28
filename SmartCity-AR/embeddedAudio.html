@@ -7,7 +7,7 @@
     <body style="margin : 0px; overflow: hidden;">
         <a-scene embedded arjs>
             <a-assets>
-                <audio id="ducksound" src="/SmartCity-AR/assets/duck.mp3" response-type="arraybuffer" autoplay="true" loop></audio>
+                <audio controls id="ducksound" src="/SmartCity-AR/assets/duck.mp3" response-type="arraybuffer" autoplay="true" loop></audio>
                 <a-asset-item id="duck" src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"></a-asset-item>
             </a-assets>
 
@@ -30,8 +30,7 @@
             </a-marker>
 			
             <!-- add a camera to the scene that renders the objects for us -->
-            <a-entity camera></a-entity>
-			<button type="button">Click Me!</button> 
+            <a-entity camera></a-entity>	
         </a-scene>
     </body>
 </html>
