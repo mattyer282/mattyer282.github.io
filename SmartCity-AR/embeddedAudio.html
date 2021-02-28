@@ -23,12 +23,12 @@
                 gltf-model="#duck"
                 >
                 </a-entity>
-
-                
+				
+				<!-- second entity: reference to the above audio -->
+				<a-entity sound="src: #ducksound; volume: 30; loop: true">
+				</a-entity>
             </a-marker>
-			<!-- second entity: reference to the above audio -->
-            <a-entity sound="src: #ducksound; volume: 30; loop: true">
-            </a-entity>
+			
             <!-- add a camera to the scene that renders the objects for us -->
             <a-entity camera></a-entity>
         </a-scene>
