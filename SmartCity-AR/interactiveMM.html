@@ -9,16 +9,20 @@
   <!-- this part defines the playback / control function and events -->
   <script>
     var markerFound = 0;
+	var marker2Found = 0;
     AFRAME.registerComponent('button', {
         init: function ()
         {
           var elem = document.documentElement;
           var marker = document.querySelector("#marker");
+		  var marker2 = document.querySelector("#marker2");
           var fullbutton = document.querySelector("#fullscreen");
           var Video_0 = document.querySelector("#Video_Asset_0");
 		  var Video_1 = document.querySelector("#Video_Asset_1");
           var button = document.querySelector("#mutebutton");
+		  var button2 = document.querySelector("#mutebutton2");
           button.hidden = true;
+		  button2.hidden = true;
           Video_0.pause();
 		  Video_1.pause();
 
@@ -28,12 +32,24 @@
             // Video_0.play();  // if you want the video 
             // to start immediently on marker detection, uncomment this
           });
+		  
+		  marker2.addEventListener("markerFound", function (evt) {
+            marker2Found = 1;
+            button2.hidden = false;
+            // Video_0.play();  // if you want the video 
+            // to start immediently on marker detection, uncomment this
+          });
 
           marker.addEventListener("markerLost", function (evt) {
             markerFound = 0;
             Video_0.pause();
-			Video_1.pause();
             button.hidden = true;
+          });
+		  
+		  marker2.addEventListener("markerLost", function (evt) {
+            marker2Found = 0;
+            Video_1.pause();
+            button2.hidden = true;
           });
 
           // button for video play/pause
@@ -48,14 +64,20 @@
               Video_0.muted=true;
               Video_0.pause();
             }
-			if(Video_1.muted==true){
-              button.innerHTML="Pause";
+          });
+		  
+		  // button for video play/pause
+          button2.addEventListener("click", function(evt){
+            console.log("button clicked")
+            if(Video_1.muted==true){
+              button2.innerHTML="Pause";
               Video_1.muted=false;
               Video_1.play();
             }else{
-              button.innerHTML="Play";
+              button2.innerHTML="Play";
               Video_1.muted=true;
               Video_1.pause();
+            }
           });
 
           // button for full screen
@@ -103,6 +125,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
   <div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
     <button id="mutebutton" style='position: absolute; bottom: 10px' hidden>Play</button>
+	<button id="mutebutton2" style='position: absolute; bottom: 10px' hidden>Play</button>
   </div>
   <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
     <input type="image" id="fullscreen" src="assets/fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'></input>
@@ -117,7 +140,7 @@
       <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1.78" position="0 0 0" rotation="-90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
 	
-	<a-marker id="marker" preset="kanji" emitevents="true" button>
+	<a-marker id="marker2" preset="kanji" emitevents="true" button>
       <a-video src="#Video_Asset_1" id="Video_1" class="intersectable" width="1" height="1.78" position="0 0 0" rotation="-90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
     <a-entity camera></a-entity>
