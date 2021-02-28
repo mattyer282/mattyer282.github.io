@@ -8,7 +8,7 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <!-- this part defines the playback / control function and events -->
   <script>
-    var markerFound = 0;
+    var marker1Found = 0;
 	var marker2Found = 0;
     AFRAME.registerComponent('button', {
         init: function ()
@@ -27,7 +27,7 @@
 		  Video_1.pause();
 
           marker.addEventListener("markerFound", function (evt) {
-            markerFound = 1;
+            marker1Found = 1;
             button.hidden = false;
             // Video_0.play();  // if you want the video 
             // to start immediently on marker detection, uncomment this
@@ -41,14 +41,13 @@
           });
 
           marker.addEventListener("markerLost", function (evt) {
-            markerFound = 0;
+            marker1Found = 0;
             Video_0.pause();
             button.hidden = true;
           });
 		  
 		  marker2.addEventListener("markerLost", function (evt) {
-            markerFound = 0;
-			marker2Found = 0;
+            marker2Found = 0;
             Video_1.pause();
             button2.hidden = true;
           });
@@ -117,7 +116,9 @@
         tick: function (totalTime, deltaTime)
         {
             var dTime = deltaTime / 1000;
-            if (markerFound == 1) {
+            if (marker1Found == 1) {
+            }
+			if (marker2Found == 1) {
             }
         }
       });
