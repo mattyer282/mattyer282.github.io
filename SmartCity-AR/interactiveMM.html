@@ -100,13 +100,14 @@
     <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: .intersectable; useWorldCoordinates: true;"></a-entity>
     <a-assets>
       <video id="wiggle" autoplay="false" loop crossorigin="anonymous" src="assets/wiggle.mp4" webkit-playsinline playsinline controls muted></video>
+	  <video id="cubes" autoplay="false" loop crossorigin="anonymous" src="assets/cubes.mp4" webkit-playsinline playsinline controls muted></video>
     </a-assets>
     <a-marker id="marker" preset="hiro" emitevents="true" button>
       <a-video src="#wiggle" id="wigglevideo" class="intersectable" width="1" height="1.78" position="0 0 0" rotation="-90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
 	
 	<a-marker id="marker" preset="kanji" emitevents="true" button>
-      <a-video src="#wiggle" id="wigglevideo" class="intersectable" width="1" height="1.78" position="0 0 0" rotation="-90 0 0" color="#FFFFFF" transparent=False></a-video>
+      <a-video src="#cubes" id="wigglevideo" class="intersectable" width="1" height="1.78" position="0 0 0" rotation="-90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
